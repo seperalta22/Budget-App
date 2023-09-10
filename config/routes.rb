@@ -6,5 +6,5 @@ Rails.application.routes.draw do
   root to: "home#index"
   devise_for :users
   resources :home, only: [:index]
-  resources :categories, only: [:index]
+  resources :categories, only: [:index, :show, :new, :create]
 end
