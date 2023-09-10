@@ -49,7 +49,6 @@ gem 'rubocop'
 # Authentication gem
 gem 'devise', '~> 4.9'
 
-
 # Use Sass to process CSS
 # gem "sassc-rails"
 
