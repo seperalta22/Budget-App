@@ -1,1 +1,17 @@
-<h1>Categories</h1>
+<nav>
+  <h1>Categories</h1>
+  <%= button_to "Log out", destroy_user_session_path, method: :delete, data: { turbo: false } %>
+</nav>
+<main>
+  <%@categories.each do |category|%>
+    <article>
+      <%= image_tag(category.icon)%>
+      <div>
+        <h3><%= category.name %></h3>
+        <p>$17.00</p>
+        <p><%= category.created_at %></p>
+      </div>
+    </article>
+  <%end%>
+  <%= link_to "New Category", new_category_path %>
+</main>
