@@ -1,5 +1,7 @@
 <div class="flex flex-col items-center justify-center bg-gray-100">
-  <h1 class="text-4xl font-bold mb-8">Welcome to my Budget App</h1>
-  <p class="text-lg mb-8">Track your expenses and manage your finances with ease.</p>
-  <a href="/expenses" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">View Expenses</a>
+  <h1 class="text-4xl font-bold mb-8">SpendSmart</h1>
+  <nav>
+    <%= link_to  "LOG IN", new_user_session_path, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
+    <%= link_to  "SIGN UP", new_user_registration_path, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
+  </nav>
 </div>
