@@ -1,6 +1,6 @@
 <main>
   <nav>
-    <p><<p>
+    <%= link_to "<", categories_path %>
     <h2>Transactions</h2>
     <%= button_to "Log out", destroy_user_session_path, method: :delete, data: { turbo: false } %>
   </nav>

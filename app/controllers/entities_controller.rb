@@ -10,15 +10,20 @@ class EntitiesController < ApplicationController
   end
 
   def create
-    @entity = Entity.new(entity_params)
-    @entity.user = current_user
-    if @entity.save
-      params[:category_entities][:category_id].each do |category_id|
-        CategoryEntity.create(entity_id: @entity.id, category_id:)
-      end
-      redirect_to category_entities_path(params[:category_id])
+    if params[:category_entities][:category_id].length == 1
+      flash[:alert] = 'You must select at least one category'
+      redirect_to new_category_entity_path(params[:category_id])
     else
-      render :new
+      @entity = Entity.new(entity_params)
+      @entity.user = current_user
+      if @entity.save
+        params[:category_entities][:category_id].each do |category_id|
+          CategoryEntity.create(entity_id: @entity.id, category_id:)
+        end
+        redirect_to category_entities_path(params[:category_id])
+      else
+        render :new
+      end
     end
   end
 
