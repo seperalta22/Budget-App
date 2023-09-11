@@ -21,10 +21,10 @@
           <%= image_tag "default.jpg", alt:"category icon", class:"w-20 h-20"%>
         <%end%>
         <div class="flex flex-col w-full mt-4">
-        <div class="flex justify-between mb-4">
-          <h3 class="text-xl" ><%= category.name %></h3>
-          <% total_amount = category.category_entities.map { |category_entity| category_entity.entity.amount }.sum %>
-          <p class="font-bold text-black m-0 p-0">$ <%= total_amount%></p>
+          <div class="flex justify-between mb-4">
+            <h3 class="text-xl" ><%= category.name %></h3>
+            <% total_amount = category.category_entities.map { |category_entity| category_entity.entity.amount }.sum %>
+            <p class="font-bold text-black m-0 p-0">$ <%= total_amount%></p>
           </div>
           <p class="font-light text-xs"><%= category.created_at.strftime('%d %b %Y %H:%M') %></p>
         </div>
