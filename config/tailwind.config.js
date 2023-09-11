@@ -12,6 +12,9 @@ module.exports = {
       fontFamily: {
         'proxima-nova': ['Proxima Nova', 'sans'],
       },
+      colors: {
+        black: '#434b54',
+      },
     },
   },
   plugins: [
