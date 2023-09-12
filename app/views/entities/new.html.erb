@@ -1,25 +1,36 @@
-<section>
-  <nav>
-    <%= link_to "<", category_entities_path(@category) %>
-    <h2>New Transaction</h2>
-    <%= button_to "Log out", destroy_user_session_path, method: :delete, data: { turbo: false } %>
+<header class="fixed top-0 w-full">
+  <nav class="bg-gradient-to-r from-blue-600 to-blue-900 overflow-hidden flex justify-between items-center w-full p-2 py-4 text-white">
+    <%= link_to image_tag('back.svg', alt: 'Back'), category_entities_path(@category) %>
+    <h1 class="font-light text-xl uppercase">New Transactions</h1>
+    <%= button_to destroy_user_session_path, method: :delete, class: "w-6 h-6 m-0 p-0", data: { turbo: false } do %>
+      <%= image_tag 'logout.svg', alt: 'Log Out', class: "w-6 h-6 m-0 pt-1" %>
+    <% end %>
   </nav>
+</header>
+
+<section class="flex flex-col m-auto py-4 gap-4 bg-[#F0F2F1] pb-32 pt-20 mt-2">
   <%= form_with model: [@category, @entity] do |f| %>
     <%= render "shared/error_message", resource: @entity %>
-    <div class="field">
-      <%= f.label :name%>
-      <%= f.text_field :name, placeholder: 'Name', value: '', required: true%>
+    <div class="w-full">
+      <%= f.text_field :name, placeholder: 'Name', value: '', required: true, class: "w-full border-gray-200" %>
     </div>
+
     <div class="field">
-      <%= f.label :amount %>
-      <%= f.number_field :amount %>
+      <%= f.number_field :amount, placeholder: 'Amount', class: "w-full border-gray-200" %>
     </div>
-    <%= fields_for :category_entities do |category_entity| %>
-      <%= category_entity.label :category_id %>
-      <%= category_entity.collection_check_boxes :category_id, Category.all, :id, :name, { multiple: true } %>
-      <%= category_entity.label :entity_id %>
-      <%= category_entity.hidden_field :entity_id, value: @entity.id %>
-    <%end%>
-    <%= f.submit "Create Entity", class: "button"%>
-  <%end%>
+
+    <div class="p-4 bg-white flex flex-col">
+      <%= fields_for :category_entities do |category_entity| %>
+        <%= category_entity.label :category_id, class: "mr-2" %>
+        <div class="flex flex-wrap gap-2 items-center">
+          <%= category_entity.collection_check_boxes :category_id, Category.where(user_id: current_user.id), :id, :name, { multiple: true } %>
+        </div>
+        <%= category_entity.hidden_field :entity_id, value: @entity.id %>
+      <% end %>
+    </div>
+
+    <div class="fixed bottom-0 w-full items-center justify-center bg-[#5fb523] p-4 border-t-2 border-gray-400 shadow-md">
+      <%= f.submit "Create Transaction", class: "block w-full p-4 text-center uppercase bg-transparent border-2 border-white text-white" %>
+    </div>
+  <% end %>
 </section>
