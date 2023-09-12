@@ -11,7 +11,7 @@
   <div class="bg-white shadow-sm p-4 pb-0">
   <article class='flex items-center gap-4'>
     <% if @category.icon.attached? %>
-          <%= image_tag(category.icon, class:"w-20 h-20 object-cover")%>
+          <%= image_tag(@category.icon, class:"w-20 h-20 object-cover")%>
         <%else%>
           <%= image_tag "default.jpg", alt:"category icon", class:"w-20 h-20 object-cover"%>
         <%end%>
