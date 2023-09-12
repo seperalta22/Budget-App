@@ -7,15 +7,18 @@
     <% end %>
   </nav>
 </header>
-<section class="flex flex-col m-auto p-4 gap-4 bg-[#F0F2F1] pb-32 pt-20 mt-2">
+
+<section class="flex flex-col m-auto py-4 gap-4 bg-[#F0F2F1] pb-32 pt-20 mt-2">
   <%= form_with model:Category do |f| %>
     <div class="field">
-     <%= f.text_field :name, placeholder: 'Name', value: '', required: true%>
+     <%= f.text_field :name, placeholder: 'Name', value: '', required: true, class: "w-full border-gray-200"%>
     </div>
-    <div class="field">
+    <div class="p-4 bg-white flex flex-col gap-2">
       <%= f.label :icon %>
       <%= f.file_field :icon %>
     </div>
-    <%= f.submit "Create Category", class: "button"%>
+        <div class="fixed bottom-0 w-full items-center justify-center bg-[#5fb523] p-4 border-t-2 border-gray-400 shadow-md">
+      <%= f.submit "Create Category", class: "block w-full p-4 text-center uppercase bg-transparent border-2 border-white text-white" %>
+    </div>
   <%end%>
 </section>
