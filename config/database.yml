@@ -1,5 +1,5 @@
 # Default database configuration
-&default:
+default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
@@ -24,6 +24,6 @@ test:
 
 # Production environment
 production:
-  <<: *default
-  database: budget_app_production
-  url: <%= ENV["MY_APP_DATABASE_URL"] %>
+  production:
+    <<: *default
+    url: <%= ENV['DATABASE_URL'] %>

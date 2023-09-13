@@ -1,0 +1,35 @@
+<header class="fixed top-0 w-full">
+  <nav  class="  bg-gradient-to-r from-blue-600 to-blue-900 overflow-hidden flex justify-between items-center w-full p-2 py-4 text-white">
+    <%= link_to image_tag('back.svg', alt: 'Back'), root_path %>
+    <h1 class="font-light text-xl uppercase">Register</h1>
+    <div></div>
+  </nav>
+</header>
+<section class="flex flex-col m-auto py-4 gap-4 bg-[#F0F2F1] pb-32 pt-20 mt-2 h-[100vh]">
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name),data: {turbo: false}) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.text_field :name, placeholder: 'Name', autofocus: true, class: "w-full border-gray-200"%>
+  </div>
+
+  <div class="field">
+    <%= f.email_field :email, placeholder: 'Email', autofocus: true, autocomplete: "email", class: "w-full border-gray-200" %>
+  </div>
+
+  <div class="field">
+    <%= f.password_field :password, placeholder: 'Password (6 characters minimum)', autocomplete: "new-password", class: "w-full border-gray-200" %>
+  </div>
+
+  <div class="field">
+   <%= f.password_field :password_confirmation, placeholder: 'Password confirmation', autocomplete: "new-password", class: "w-full border-gray-200" %>
+  </div>
+
+   <div class="absolute top-1 right-2 p-4 text-white">
+    <%= f.submit "Sing up" %>
+  </div>
+<% end %>
+<%# <%= render "devise/shared/links" %> 
+
+</section>

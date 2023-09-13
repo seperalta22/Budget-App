@@ -1,0 +1,24 @@
+  <header class="fixed top-0 w-full">
+  <nav  class="  bg-gradient-to-r from-blue-600 to-blue-900 overflow-hidden flex justify-between items-center w-full p-2 py-4 text-white">
+    <%= link_to image_tag('back.svg', alt: 'Back'), categories_path %>
+    <h1 class="font-light text-xl uppercase">New Category</h1>
+    <%= button_to destroy_user_session_path, method: :delete,class:"w-6 h-6 m-0 p-0" ,data: { turbo: false } do %>
+      <%= image_tag 'logout.svg', alt: 'Log Out',class:"w-6 h-6 m-0 pt-1"%>
+    <% end %>
+  </nav>
+</header>
+
+<section class="flex flex-col m-auto py-4 gap-4 bg-[#F0F2F1] pb-32 pt-20 mt-2">
+  <%= form_with model:Category do |f| %>
+    <div class="field">
+     <%= f.text_field :name, placeholder: 'Name', value: '', required: true, class: "w-full border-gray-200"%>
+    </div>
+    <div class="p-4 bg-white flex flex-col gap-2">
+      <%= f.label :icon %>
+      <%= f.file_field :icon %>
+    </div>
+        <div class="fixed bottom-0 w-full items-center justify-center bg-[#5fb523] p-4 border-t-2 border-gray-400 shadow-md">
+      <%= f.submit "Create Category", class: "block w-full p-4 text-center uppercase bg-transparent border-2 border-white text-white" %>
+    </div>
+  <%end%>
+</section>

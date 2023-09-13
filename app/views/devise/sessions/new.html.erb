@@ -1,0 +1,36 @@
+<header class="fixed top-0 w-full">
+  <nav  class="  bg-gradient-to-r from-blue-600 to-blue-900 overflow-hidden flex justify-between items-center w-full p-2 py-4 text-white">
+    <%= link_to image_tag('back.svg', alt: 'Back'), root_path %>
+    <h1 class="font-light text-xl uppercase">Login</h1>
+    <div></div>
+  </nav>
+</header>
+<section class="flex flex-col m-auto py-4 gap-4 bg-[#F0F2F1] pb-32 pt-20 mt-2 h-[100vh]">
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="field">
+    <%= f.email_field :email, placeholder: 'Email', autofocus: true, autocomplete: "email",class: "w-full border-gray-200" %>
+  </div>
+
+  <div class="field">
+  <%= f.password_field :password, placeholder: 'Password', autocomplete: "current-password",class: "w-full border-gray-200" %>
+  </div>
+
+  <%# <% if devise_mapping.rememberable? %>
+    <%# <div class="field"> %>
+      <%# <%= f.check_box :remember_me %> 
+      <%# <%= f.label :remember_me %>
+    <%# </div> %>
+  <%# <% end %>
+
+  <div class="absolute top-1 right-2 p-4 text-white">
+    <%= f.submit "Log in" %>
+  </div>
+  <div class="w-full text-center">
+<%= render "devise/shared/links" %>
+</div>
+<% end %>
+
+
+</section>
+
